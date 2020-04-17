@@ -6,14 +6,14 @@ namespace LCS_csharp_
     {
         static void Lcs(string s1, string s2)
         {
-            var m = s1.Length;
-            var n = s2.Length;
+            var s1len = s1.Length;
+            var s2len = s2.Length;
             //define lcs table (numbers)
-            int[,] lcsTable = new int[m + 1, n + 1];
+            int[,] lcsTable = new int[s1len + 1, s2len + 1];
 
-            for (int itt = 0; itt <= m; itt++)
+            for (int itt = 0; itt <= s1len; itt++)
             {
-                for (int jtt = 0; jtt <= n; jtt++)
+                for (int jtt = 0; jtt <= s2len; jtt++)
                 {
                     //first row, fist column- fill with 0
                     if (itt == 0 || jtt == 0)
@@ -27,11 +27,11 @@ namespace LCS_csharp_
                 }
             }
 
-            int index = lcsTable[m, n];
+            int index = lcsTable[s1len, s2len];
             //define lcs table (characters)
             char[] lcs = new char[index + 1];
             lcs[index] = '\0';
-            int i = m, j = n;
+            int i = s1len, j = s2len;
             //going backward and finding diagonal elements
             while (i > 0 && j > 0)
             {
