@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace LCS_csharp_
 {
@@ -47,12 +48,30 @@ namespace LCS_csharp_
                 else
                     j--;
             }
-            Console.WriteLine($"S1 : {s1}\nS2 : {s2}\nLCS: {new string(lcs)} ");
+            Console.WriteLine($"\nS1 : {s1}\nS2 : {s2}\nLCS: {new string(lcs)} ");
         }
 
         static void Main()
         {
-            Lcs("ACADB", "CBDA");
+
+            while (true)
+            {
+                Console.WriteLine("Program for solving LCS problem \n Please enter 2 string separated with ',' ");
+                var input = Console.ReadLine();
+                string[] words = input.Split(',');
+                if (words.Length == 2 && input.All(c => Char.IsLetterOrDigit(c) || c == ','))
+                {
+                    Lcs(words[0], words[1]);
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
+                else
+                {
+                    Console.Clear();
+
+                    Console.WriteLine("Wrong input, please try again \n");
+                }
+            }
         }
     }
 }
