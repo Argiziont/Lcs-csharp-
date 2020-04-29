@@ -9,7 +9,6 @@ namespace LCS_csharp_
         
         RandomStringGenerator rsg = new RandomStringGenerator("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
 
-
         public LocalContext()
         {
             //Database.EnsureDeleted();
@@ -18,7 +17,7 @@ namespace LCS_csharp_
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //connecting to DB
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-K3B9EQ2\SQLEXPRESS;Database=lcsdb;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=DESKTOP-K3B9EQ2\SQLEXPRESS;Database=lcsdb;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

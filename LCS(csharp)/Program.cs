@@ -7,7 +7,11 @@ namespace LCS_csharp_
     {
         static void Main()
         {
+            Console.WriteLine("Attempting to make connection with ' DESKTOP-K3B9EQ2\\SQLEXPRESS '");
+
             LocalContext lcsContext = new LocalContext();
+
+            Console.Clear();
             while (true)
             {
                 Console.Write("Program for solving LCS problem \n Please enter 2 string separated with ',' : ");

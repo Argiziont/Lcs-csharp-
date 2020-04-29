@@ -25,8 +25,5 @@ namespace LCS_csharp_
 
             return new string(stringChars);
         }
-
-
-
     }
 }
