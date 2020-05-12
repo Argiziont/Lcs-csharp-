@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace LCS_csharp_
+namespace DataBaseAndLogic
 {
-    class LocalContext : DbContext
+    public class LocalContext : DbContext
     {
         public DbSet<Lcs> LcsStrings { get; set; }
         

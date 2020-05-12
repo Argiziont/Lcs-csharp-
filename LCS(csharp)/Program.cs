@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
+using DataBaseAndLogic;
 
 namespace LCS_csharp_
 {
@@ -8,8 +10,6 @@ namespace LCS_csharp_
         static void Main()
         {
             Console.WriteLine("Attempting to make connection with ' DESKTOP-K3B9EQ2\\SQLEXPRESS '");
-
-            LocalContext lcsContext = new LocalContext();
 
             Console.Clear();
             while (true)
@@ -21,24 +21,29 @@ namespace LCS_csharp_
 
                 if (words.Length == 2 && input.All(c => Char.IsLetterOrDigit(c) || c == ','))
                 {
-                    Lcs lcs = new Lcs(words[0], words[1]);
-                    lcsContext.LcsStrings.Add(new Lcs(words[0], words[1]));//saving results to DB
+                    using (LocalContext lcsContext = new LocalContext())
+                    {
+                        Lcs lcs = new Lcs(words[0], words[1]);
+                        lcsContext.LcsStrings.Add(new Lcs(words[0], words[1]));//saving results to DB
 
-                    Console.WriteLine("\nLast answers\n" + new string('-', 25));
+                        Console.WriteLine("\nLast answers\n" + new string('-', 25));
 
-                    var answs = (from answers in lcsContext.LcsStrings select answers).ToList();
+                        var answs = (from answers in lcsContext.LcsStrings select answers).ToList();
+                        //writes last 5 or less elements from DB
+                        lcsContext.LcsStrings.Take(5).ToList().ForEach(e =>
+                        Console.WriteLine($"\nS1 : {e.FirstString}\nS2 : {e.SecondString}\nLCS: {e.AnswerString} \n"));
 
-                    //writes last 5 or less elements from DB
-                    for (int i = answs.Count - 1; i > answs.Count-6 && i > 0; i--)
-                        Console.WriteLine($"\nS1 : {answs[i].FirstString}\nS2 : {answs[i].SecondString}\nLCS: {answs[i].AnswerString} \n");
+
+                        Console.WriteLine(new string('-', 25)+ "\nYour answer\n"+ new string('-', 25));
+                        lcs.LcsOut();
+                        Console.WriteLine("\n" + new string('-', 25));
+                        Console.WriteLine("Press 'Enter' for saving changes or close Console for discard");
+                        Console.ReadKey();
+
+                        lcsContext.SaveChanges();
+                    }
                     
-
-                    Console.WriteLine(new string('-', 25)+ "\nYour answer\n"+ new string('-', 25));
-                    lcs.LcsOut();
-                    Console.WriteLine("\n" + new string('-', 25));
-                    Console.WriteLine("Press 'Enter' for saving changes or close Console for discard");
-                    Console.ReadKey();
-                    lcsContext.SaveChanges();
+                    
                     Environment.Exit(0);
                 }
                 else

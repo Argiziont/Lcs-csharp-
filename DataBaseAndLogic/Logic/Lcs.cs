@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LCS_csharp_
+namespace DataBaseAndLogic
 {
-    class Lcs
+    public class Lcs
     {
         //DB id
         public int Id { get; set; }
