@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCS(csharp)", "LCS(csharp)\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseAndLogic", "DataBaseAndLogic\DataBaseAndLogic.csproj", "{9685F46B-D98A-4002-99A9-98B47ABBF78F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCS(Web)", "LCS(Web)\LCS(Web).csproj", "{FA2DF6A5-C4EA-4A41-8EA5-4FC79FC461B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9685F46B-D98A-4002-99A9-98B47ABBF78F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9685F46B-D98A-4002-99A9-98B47ABBF78F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9685F46B-D98A-4002-99A9-98B47ABBF78F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2DF6A5-C4EA-4A41-8EA5-4FC79FC461B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2DF6A5-C4EA-4A41-8EA5-4FC79FC461B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2DF6A5-C4EA-4A41-8EA5-4FC79FC461B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2DF6A5-C4EA-4A41-8EA5-4FC79FC461B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

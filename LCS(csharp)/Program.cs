@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
-using DataBaseAndLogic;
+using DataBaseAndLogic.DBlogic;
+using DataBaseAndLogic.Logic;
 
 namespace LCS_csharp_
 {
@@ -30,7 +31,7 @@ namespace LCS_csharp_
 
                         var answs = (from answers in lcsContext.LcsStrings select answers).ToList();
                         //writes last 5 or less elements from DB
-                        lcsContext.LcsStrings.Take(5).ToList().ForEach(e =>
+                        lcsContext.LcsStrings.Skip(Math.Max(0, lcsContext.LcsStrings.Count() - 5)).ToList().ForEach(e =>
                         Console.WriteLine($"\nS1 : {e.FirstString}\nS2 : {e.SecondString}\nLCS: {e.AnswerString} \n"));
 
 
@@ -42,8 +43,6 @@ namespace LCS_csharp_
 
                         lcsContext.SaveChanges();
                     }
-                    
-                    
                     Environment.Exit(0);
                 }
                 else

@@ -1,14 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataBaseAndLogic.Logic;
+using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace DataBaseAndLogic
+namespace DataBaseAndLogic.DBlogic
 {
     public class LocalContext : DbContext
     {
+       
         public DbSet<Lcs> LcsStrings { get; set; }
         
+        public static string ConnectionString { get; } = @"Server=DESKTOP-K3B9EQ2\SQLEXPRESS;Database=lcsdb;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+
         RandomStringGenerator rsg = new RandomStringGenerator("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
 
+
+        public LocalContext(DbContextOptions<LocalContext> options)
+            : base(options)
+        {
+            //Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
         public LocalContext()
         {
             //Database.EnsureDeleted();
@@ -17,7 +29,7 @@ namespace DataBaseAndLogic
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //connecting to DB
-                optionsBuilder.UseSqlServer(@"Server=DESKTOP-K3B9EQ2\SQLEXPRESS;Database=lcsdb;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

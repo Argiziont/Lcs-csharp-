@@ -1,0 +1,47 @@
+﻿@model LcsHolder
+        <div class="row panel panel-success mt-5">
+            <div class="panel-heading text-center col-md-4"><h4>LCS Input</h4></div>
+            <div class="col-md-1"></div>
+            <div class="panel-heading text-center col-md-4"><h4>Last Five strings</h4></div>
+        </div>
+        <div class="row panel panel-success mt-2 ml-10">
+            <div class="panel-body col-md-4">
+                <form class="p-3 " asp-action="LcsForm" method="post">
+                    <div asp-validation-summary="All"></div>
+                    <div class="form-group">
+                        <label asp-for="First">Your name:</label>
+                        <input class="form-control" asp-for="First" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Second">Your email:</label>
+                        <input class="form-control" asp-for="Second" />
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">
+                            Submit LCS
+                        </button>
+                    </div>
+                    @if (ViewBag.IsAnwerReady)
+                    {
+                        <div class="alert alert-success mt-1 text-center">
+                            <b>Your last request</b><br />
+                            <b>Answer:</b>@Model.Answer <br />
+                        </div>
+                    }
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="panel-body col-md-4">
+                    @foreach (var str in Model.Strings)
+                    {
+                        <div class="alert alert-primary mt-1 text-center">
+                            <b>First String:</b>@str.FirstString <br />
+                            <b>Second String:</b>@str.SecondString <br />
+                            <b>Answer String:</b>@str.AnswerString.Remove(str.AnswerString.Length - 1) <br />
+                        </div>
+
+                    }
+            </div>
+        </div>
+    

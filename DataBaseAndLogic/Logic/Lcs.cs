@@ -1,16 +1,18 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataBaseAndLogic
+namespace DataBaseAndLogic.Logic
 {
     public class Lcs
     {
         //DB id
+       
         public int Id { get; set; }
 
         public string FirstString { get; set; }
         public string SecondString { get; set; }
-        public string AnswerString { get { return LcsFinder(); } set { } }
+        public string AnswerString { get {return LcsFinder();} set { } }
 
         [NotMapped]//unnecessary props that will not be shown on the table
         private int[,] lcsTable;
