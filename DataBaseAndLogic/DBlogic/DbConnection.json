@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=DESKTOP-V04VG11\\SQLEXPRESS;Database=SportsStore;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}
