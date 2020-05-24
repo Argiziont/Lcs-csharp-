@@ -37,8 +37,7 @@ namespace DataBaseAndLogic.DBlogic
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .AddJsonFile(@"DBlogic\DbConnection.json")
             .Build();
-            var constr = configuration.GetConnectionString("DefaultConnection");
-            return constr;
+            return configuration.GetConnectionString("DefaultConnection"); ;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
