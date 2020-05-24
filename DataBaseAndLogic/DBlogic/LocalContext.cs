@@ -28,16 +28,16 @@ namespace DataBaseAndLogic.DBlogic
         {
 
             //connecting to DB
-            optionsBuilder.UseSqlServer(GetConfigurationString());
+            optionsBuilder.UseSqlServer(GetConfigurationString("appsettings.json", "DefaultConnection"));
         }
 
-        public static string GetConfigurationString()
+        public static string GetConfigurationString(string filename, string connectionstringname)
         {
             var configuration = new ConfigurationBuilder()
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile(@"DBlogic\DbConnection.json")
+            .AddJsonFile(@filename)
             .Build();
-            return configuration.GetConnectionString("DefaultConnection"); ;
+            return configuration.GetConnectionString(connectionstringname);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

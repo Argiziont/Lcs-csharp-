@@ -22,7 +22,7 @@ namespace LCS_Web_
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<LocalContext>(options =>
-               options.UseSqlServer(LocalContext.GetConfigurationString()));
+               options.UseSqlServer(LocalContext.GetConfigurationString("appsettings.json", "DefaultConnection")));
             services.AddControllersWithViews();
             services.AddTransient<ILscString, EFLscString>();
             services.AddMvc(option => option.EnableEndpointRouting = false);
