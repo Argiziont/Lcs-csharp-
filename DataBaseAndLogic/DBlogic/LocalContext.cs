@@ -10,8 +10,6 @@ namespace DataBaseAndLogic.DBlogic
        
         public DbSet<Lcs> LcsStrings { get; set; }
         
-        public static string ConnectionString { get; } = @"Server=DESKTOP-V04VG11\SQLEXPRESS;Database=lcsdb;Trusted_Connection=True;MultipleActiveResultSets=true";
-
         RandomStringGenerator rsg = new RandomStringGenerator("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
 
 
